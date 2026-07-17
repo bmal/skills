@@ -12,8 +12,8 @@ review prompts posted on the new parent.
 
 Input: the current conversation (an adversarial review that produced findings) and the
 source program's parent issue, if one exists. Mechanics and prompt contract are those of
-`/plan-to-program` — read `.opencode/commands/plan-to-program.md` now and follow it; the
-deltas below govern where the two differ. This command ends when the issues and prompts
+`/plan-to-program` — read that skill now and follow it; the deltas below govern where the
+two differ. This command ends when the issues and prompts
 are published — never launch an implementation or review session yourself.
 
 ## Instructions
