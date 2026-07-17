@@ -43,6 +43,8 @@ npx skills@latest add bmal/skills
 
 Prefer a plug-and-play install you don't maintain by hand? These skills also ship as a native [Claude Code plugin](https://code.claude.com/docs/en/plugins). Instead of copying editable files into your repo, the plugin installs the whole skill set as a managed bundle that updates when I ship a new version — you subscribe rather than fork.
 
+> **Note:** the plugin marketplace points at the upstream `mattpocock/skills`, so it installs the original set — it does **not** include this fork's additions (`plan-to-program`, `findings-to-program`). To get those, use the `bmal/skills` Quickstart above.
+
 Inside Claude Code:
 
 ```
