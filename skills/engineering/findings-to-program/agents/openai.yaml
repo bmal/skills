@@ -1,0 +1,5 @@
+interface:
+  display_name: "Findings To Program"
+  short_description: "Turn review findings into a fix program"
+policy:
+  allow_implicit_invocation: false

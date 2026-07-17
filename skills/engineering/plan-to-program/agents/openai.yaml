@@ -1,0 +1,5 @@
+interface:
+  display_name: "Plan To Program"
+  short_description: "Turn a plan into an issue-tracker program"
+policy:
+  allow_implicit_invocation: false
