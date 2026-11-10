@@ -98,8 +98,26 @@ and stopping rules (PR-1), an escape hatch (PR-8). Target ≤800 words each.
 - Ends with what was verified by running it, what was only read, what could not be
   checked and why, and an explicit verdict against the program goal.
 
-### 5. Deliver
+### 5. Recommend a model
+
+A recommendation, never binding, with a one-line reason each time:
+
+- **Each child:** post `Recommended model (not binding): …` as a comment on the child. The
+  strongest tier (for Claude, Fable) only where it clearly beats the standard one (Opus):
+  open design, a measurement whose plan can waste a billed run, reading noisy results.
+  Build-to-spec, lookup and mechanical work get the standard tier.
+- **The review:** one line directly above the adversarial review prompt,
+  `Recommended review model (Claude leg): …`. The strongest tier when the program touches
+  an owner approval, an acceptance or publish gate, or anything that decides a billed run;
+  when it has four or more children or spans several modules; or when it is a fix program
+  whose last review found a fatal or major defect. Otherwise the standard tier. The review
+  runs once per program, so lean to the stronger model when unsure.
+
+This is a guess made before any code exists. `/adversarial-review` re-checks it against the
+shipped diff, so do not treat it as settled.
+
+### 6. Deliver
 
 Post both prompts as one comment on the parent issue, then print them in chat with a link
-to the parent. Done when: parent + register + approved children are published and the
-prompts are posted and printed.
+to the parent. Done when: parent + register + approved children are published, each child
+carries its model line, and the prompts are posted and printed.

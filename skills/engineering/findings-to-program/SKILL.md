@@ -106,7 +106,14 @@ step 4, with these additions to the review prompt:
 A single standalone issue gets one implementation prompt and no review prompt, unless the
 fix is critical enough that the owner asks for one.
 
-### 7. Deliver
+### 7. Recommend a model
 
-Per `/plan-to-program` step 5: the prompts as one comment on the new parent (or on the
+Per `/plan-to-program` step 5: a non-binding model line on each child (or on the
+standalone issue) and above the review prompt. Do not copy the source program's lines —
+the fixes are different work. A fix program whose source review found a fatal or major
+defect gets the strongest tier for its review.
+
+### 8. Deliver
+
+Per `/plan-to-program` step 6: the prompts as one comment on the new parent (or on the
 standalone issue), printed in chat with a link, beside the final disposition table.

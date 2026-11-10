@@ -18,7 +18,22 @@ Identify the parent issue. The review prompt is the fenced block under the paren
 "Adversarial review prompt" heading (`/plan-to-program` puts it there). Every child must
 be closed; a program reviewed half-shipped produces findings about missing work.
 
-### 2. Run both legs
+### 2. Choose the Claude model
+
+The parent may carry `Recommended review model (Claude leg): …` above the review prompt.
+That line was written before any code existed, so check it against what shipped: the
+children that were added since, and the size and reach of the diff (`git log` over the
+program's commits). Use the strongest tier (Fable) when the program touches an owner
+approval, an acceptance or publish gate, or anything that decides a billed run; when it has
+four or more children or spans several modules; or when it is a fix program whose last
+review found a fatal or major defect. Otherwise the standard tier (Opus). The review runs
+once per program, so lean to the stronger model when unsure.
+
+Tell the owner in one line which model you will use and why — and that it differs from
+the parent's line, if it does — then pass it as `--claude-model`. The owner's stated
+choice wins. The GPT leg takes the project's pinned model; do not pick one.
+
+### 3. Run both legs
 
 ```bash
 python3 <this skill's directory>/scripts/run_review.py --parent <N> --out <scratch dir>
@@ -28,9 +43,9 @@ Run it from the checkout under review, in the background: a full review takes te
 minutes per leg. The script refuses, with the reason, when the prompt is missing, a child
 is open, or a CLI is absent. Useful flags:
 
-- `--claude-model`, `--gpt-model` — otherwise read from the `claude` and `opencode` rows of
-  the project's `config/executors.md` when it has one. Never copy a model id from an old
-  record.
+- `--claude-model` — the model chosen in step 2. `--gpt-model` — only when the project
+  pins none. Left out, each is read from the `claude` and `opencode` rows of the project's
+  `config/executors.md` when it has one. Never copy a model id from an old record.
 - `--post` — also post each report verbatim as a comment on the parent. Use it for a real
   review; leave it off for a trial.
 - `--in-place` — review the live checkout instead of clones. Only when the review needs
@@ -47,9 +62,9 @@ Both legs get the same prompt, verbatim, behind a short preamble that tells the 
 print its report instead of posting it. Neither sees the other's report or this
 conversation. Do not add your expectations to the prompt.
 
-### 3. Report
+### 4. Report
 
-When the script exits, read both reports and tell the owner, per leg: the verdict, the
+When the script exits, read both reports and tell the owner, per leg: the model, the verdict, the
 count of findings by severity, and anything the leg said it had to skip. If a leg failed,
 say which and why (its raw log is beside the reports), and ask whether to rerun it or go on
 with one — never stand in for a missing leg with a second run of the same family.
