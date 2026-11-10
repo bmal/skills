@@ -13,15 +13,16 @@ Reachable only when you type them (Claude Code: `disable-model-invocation: true`
 - **[setup-matt-pocock-skills](./setup-matt-pocock-skills/SKILL.md)** — Configure this repo for the engineering skills (issue tracker, triage labels, domain doc layout). Run once per repo.
 - **[to-spec](./to-spec/SKILL.md)** — Turn the current conversation into a spec and publish it to the issue tracker.
 - **[to-tickets](./to-tickets/SKILL.md)** — Break any plan, spec, or conversation into a set of tracer-bullet tickets, each declaring its blocking edges — text in a local file, or native blocking links on a real tracker.
-- **[plan-to-program](./plan-to-program/SKILL.md)** — Turn a concluded plan discussion into a full issue-tracker program: parent spec, ratified decision register, blocked child tickets, and the implementation + adversarial-review prompts posted on the parent.
-- **[findings-to-program](./findings-to-program/SKILL.md)** — Turn a review's findings into a fix program whose children, once all shipped, close every finding — following the plan-to-program contract with total finding-coverage and cumulative-surface review.
-- **[implement](./implement/SKILL.md)** — Build the work described by a spec or set of tickets, driving `/tdd` at pre-agreed seams and closing out with `/code-review` before committing.
 - **[wayfinder](./wayfinder/SKILL.md)** — Plan a huge chunk of work — more than one agent session can hold — as a shared map of decision tickets on the issue tracker, resolved one at a time until the way to the destination is clear.
 
 ## Model-invoked
 
 Model- or user-reachable (rich trigger phrasing so the model can reach for them).
 
+- **[plan-to-program](./plan-to-program/SKILL.md)** — Turn a concluded plan discussion into a full issue-tracker program: parent spec, ratified decision register, blocked child tickets, and the implementation + adversarial-review prompts posted on the parent.
+- **[findings-to-program](./findings-to-program/SKILL.md)** — Run a shipped program's adversarial review on two model families, synthesize one findings list, and publish issues only for the findings worth fixing — following the plan-to-program contract.
+- **[adversarial-review](./adversarial-review/SKILL.md)** — Run a shipped program's adversarial review prompt headless on Claude and GPT, each in a throwaway clone, and collect one findings report from each.
+- **[implement](./implement/SKILL.md)** — Build the work described by a spec or set of tickets, driving `/tdd` at pre-agreed seams and closing out with `/code-review` before committing.
 - **[prototype](./prototype/SKILL.md)** — Build a throwaway prototype to answer a design question: a runnable terminal app for state/logic, or several toggleable UI variations.
 
 - **[diagnosing-bugs](./diagnosing-bugs/SKILL.md)** — Disciplined diagnosis loop for hard bugs and performance regressions: reproduce → minimise → hypothesise → instrument → fix → regression-test.

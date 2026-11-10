@@ -1,7 +1,6 @@
 ---
 name: plan-to-program
-description: Turn a concluded plan discussion into an issue-tracker program — parent spec, ratified decision register, blocked child tickets, plus implementation and adversarial-review prompts posted on the parent.
-disable-model-invocation: true
+description: Turn a concluded plan discussion into an issue-tracker program — parent spec, ratified decision register, blocked child tickets, plus implementation and adversarial-review prompts posted on the parent. Use when the user wants a settled plan turned into issues, a program, or a set of blocked tickets ready for agents to pick up.
 ---
 
 # /plan-to-program
@@ -79,6 +78,13 @@ and stopping rules (PR-1), an escape hatch (PR-8). Target ≤800 words each.
 
 - Findings, not fixes: edits nothing, closes nothing; deliverable is ONE ranked findings
   report posted as a comment on the parent.
+- Dedicated to this program, never a generic checklist: it names this program's goal, its
+  register entries, and the specific reproductions that would show each one broken.
+- Runnable headless by either model family, in a fresh clone: `/adversarial-review` runs
+  it once on Claude and once on GPT, and `/findings-to-program` synthesizes the two
+  reports. So it says how to set up and run the suite from a clean clone rather than
+  naming a path only the owner's checkout has, and marks any harness-only step "if
+  available".
 - Verifies the program goal end-to-end, not the diffs alone: re-attack shipped code with
   fresh reproductions; never trust closing comments.
 - Checks the decision register was honored exactly, no fix regressed a neighbor, and
@@ -86,8 +92,11 @@ and stopping rules (PR-1), an escape hatch (PR-8). Target ≤800 words each.
 - Runs the project's full test suite itself, plus any repo-specific checks the project's
   agent rules (CLAUDE.md / AGENTS.md) name.
 - Ranks findings `fatal | major | minor | polish | watch`, each with a concrete
-  reproduction and evidence. "Verified clean" is a valid verdict — do not manufacture
-  findings. Ends with an explicit verdict against the program goal.
+  reproduction, evidence, and the realistic situation in which it would bite — or a plain
+  statement that it needs a hand-edited or otherwise unlikely state. "Verified clean" is a
+  valid verdict — do not manufacture findings.
+- Ends with what was verified by running it, what was only read, what could not be
+  checked and why, and an explicit verdict against the program goal.
 
 ### 5. Deliver
 
